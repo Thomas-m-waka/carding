@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Register</h2>
+        <form method="POST" class="myform">
+            {% csrf_token %}                            
+            {% for field in form %}
+            <p class="form_class">
+                {{ field }}
+                <label for="{{ field.id }}">{{ field.label }}</label>
+                {% if field.errors %}
+                <span class="error">{{ field.errors }}</span>
+                {% endif %}
+            </p>
+            {% endfor %}
+            <div class="submit_button">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+        <div class="account">
+            <p>Already have an account <a href="{% url 'login' %}">Login</a></p>
+        </div>
+    </div>
+</div>
+    

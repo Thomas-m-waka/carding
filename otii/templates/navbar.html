@@ -1,0 +1,44 @@
+
+{% load static %}
+<style>
+  .navbar-nav .nav-item:hover {
+    border-bottom: 2px solid yellow;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <img src="{% static 'images/otii_3.jpeg' %}" width="50" height="40" class="d-inline-block align-top" alt="Logo">
+  </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav" style="margin-right: 50px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="font-size: 18px; padding: 10px;">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-size: 18px; padding: 10px;">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style="font-size: 18px; padding: 10px;">Pricing</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}" style="font-size: 18px; padding: 10px;">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}" style="font-size: 18px; padding: 10px;">Login</a>
+        </li>
+        {% endif %}
+      
+        {% if request.user.is_superuser %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'admin_user_list' %}" style="font-size: 18px; padding: 10px;">Admin</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

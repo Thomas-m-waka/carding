@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+
+<div class="container-wrapper">
+    <div class="container">
+        <!--update password form-->
+        <h2><u>Generate Verification Code</u></h2>
+        <h3>Username: {{username}}</h3>
+        <h3>Phone Number: {{ phone_number|slice:":4" }}******{{ phone_number|slice:"-2:" }}</h3>
+
+        <form method="post" action="{% url 'send-code' %}" class="myform">
+            {% csrf_token %}
+            <button type="submit">Generate Verification Code</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'form.css' %}">
+
+<div class="container-wrapper">
+    <div class="container">
+        <h2>Verification Page</h2>
+            {% if messages %}
+        <ul class="mess">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="{%url 'enter-code'%}" method="post" class="myform"> 
+            {% csrf_token %}
+            <div class="form_class">
+                <input type="hidden" name="username" value="{{ username }}">
+                <input type="text" id="verification_code" name="verification_code">
+                <label for="verification_code">Enter verification code:</label>
+            </div>
+             <div class="submit_button">
+                <button type="submit">Verify</button>
+            </div>
+    </form>
+</div>
+</div>
