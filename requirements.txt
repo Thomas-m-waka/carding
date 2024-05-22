@@ -4,7 +4,9 @@ charset-normalizer==3.3.2
 dj-database-url==2.1.0
 Django==5.0.4
 django-phonenumber-field==7.3.0
+gunicorn==22.0.0
 idna==3.7
+packaging==24.0
 phonenumberslite==8.13.35
 psycopg2-binary==2.9.9
 python-dotenv==1.0.1
