@@ -45,10 +45,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -81,9 +81,23 @@ import dj_database_url
 
 database_url = os.environ.get('DATABASE_URL')
 
+# DATABASES = {
+#   'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
+# }
 DATABASES = {
-  'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
+  'default': dj_database_url.parse('database_url')
 }
+
+# import os
+# import dj_database_url
+
+# # Load environment variables from .env file
+# load_dotenv()
+
+#  #Configure the 'default' database using dj_database_url.config()
+# DATABASES = {
+#   'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+# }
 
 import os
 from django.core.management.utils import get_random_secret_key
