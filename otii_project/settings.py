@@ -82,7 +82,7 @@ import dj_database_url
 database_url = os.environ.get('DATABASE_URL')
 
 DATABASES = {
-  'default': dj_database_url.parse(database_url)
+  'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
 }
 
 
