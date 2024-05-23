@@ -79,12 +79,23 @@ WSGI_APPLICATION = 'otii_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 import dj_database_url
 
-database_url = os.environ.get('DATABASE_URL')
+# database_url = os.environ.get('DATABASE_URL')
 
+# DATABASES = {
+#   'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
+# }
+
+
+import os
+import dj_database_url
+
+# Load environment variables from .env file
+load_dotenv()
+
+ #Configure the 'default' database using dj_database_url.config()
 DATABASES = {
-  'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
+  'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
-
 
 
 
