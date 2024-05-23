@@ -82,17 +82,22 @@ import dj_database_url
 database_url = os.environ.get('DATABASE_URL')
 
 DATABASES = {
-  'default': dj_database_url.parse('database_url')
+  'default': dj_database_url.parse('postgres://otii_user:7849SFMurbAFXizPAVnaRkLpdMt1ctwu@dpg-cp7ju9nsc6pc73abeong-a/otii')
 }
 
+import os
+from django.core.management.utils import get_random_secret_key
 
+# Security settings
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_SSL_REDIRECT = True
+SECRET_KEY = get_random_secret_key()
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+DEBUG = False
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME':os.environ.get('DATABI')
-#     }
-# }
 
 
 # Password validation
@@ -136,6 +141,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = ( os.path.join(BASE_DIR,'static/'),)
+STATIC_ROOT =  os.path.join(BASE_DIR,'static/')
 
 
